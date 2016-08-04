@@ -1,4 +1,5 @@
 require 'json'
+require './contacts_file'
 
 def read_contacts
    json = File.read( 'contacts.json' )
@@ -12,7 +13,6 @@ def write_contacts( contacts )
    end
 end
 
-end
 
 
 def show( contact )
