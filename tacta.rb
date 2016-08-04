@@ -1,6 +1,17 @@
+require 'json'
 
-contacts.each_with_index do |contact, i|
-   puts "#{i + 1}) #{contact[:name]}"
+def read_contacts
+   json = File.read( 'contacts.json' )
+   array = JSON.parse( json, { :symbolize_names => true } )
+end
+
+def write_contacts( contacts )
+   File.open( "contacts.json", "w" ) do |f|
+      json = JSON.pretty_generate( contacts )
+      f.write( json  )
+   end
+end
+
 end
 
 
