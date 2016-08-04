@@ -76,6 +76,11 @@ def action_delete( contacts )
    puts
 end
 
+def action_error
+   puts
+   puts "Sorry, I don't recognize that command."
+   puts
+end
 
 
 loop do
@@ -90,8 +95,10 @@ loop do
       action_new( contacts )
    elsif response == "d"
       action_delete( contacts )
-   else
+    elsif response =~ /[0-9]+/
       action_show( contacts, response.to_i )
+    else
+    action_error
    end
 end
 
