@@ -20,6 +20,20 @@ def index( contacts )
 
 end
 
+def create_new
+   contact = {}
+
+   puts
+   puts "Enter contact info:"
+
+   contact[:name ] = ask "Name? "
+   contact[:phone] = ask "Phone? "
+   contact[:email] = ask "Email? "
+
+   contact
+end
+
+
 loop do
    index( contacts )
 
@@ -29,14 +43,8 @@ loop do
    break if response == "q"
 
    if response == "n"
-      contact = {}
 
-      puts
-      puts "Enter contact info:"
-
-      contact[:name ] = ask "Name? "
-      contact[:phone] = ask "Phone? "
-      contact[:email] = ask "Email? "
+      contact = create_new
 
       contacts << contact
 
