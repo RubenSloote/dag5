@@ -1,34 +1,20 @@
-require 'json'
 require './contacts_file'
-
-def read_contacts
-   json = File.read( 'contacts.json' )
-   array = JSON.parse( json, { :symbolize_names => true } )
-end
-
-def write_contacts( contacts )
-   File.open( "contacts.json", "w" ) do |f|
-      json = JSON.pretty_generate( contacts )
-      f.write( json  )
-   end
-end
-
-
-
-def show( contact )
-   puts "#{contact[:name]}"
-   puts "phone: #{contact[:phone]}"
-   puts "email: #{contact[:email]}"
-end
 
 def ask( prompt )
    print prompt
    gets.chomp
 end
 
-
 def index( contacts )
+   contacts.each_with_index do |contact, i|
+      puts "#{i+1}) #{contact[:name]}"
+   end
+end
 
+def show( contact )
+   puts "#{contact[:name]}"
+   puts "phone: #{contact[:phone]}"
+   puts "email: #{contact[:email]}"
 end
 
 def create_new
@@ -67,7 +53,6 @@ def action_show( contacts, i )
    puts
 end
 
-
 def action_delete( contacts )
    puts
    response = ask "Delete which contact? "
@@ -84,12 +69,6 @@ def action_delete( contacts )
    puts
 end
 
-def action_error
-   puts
-   puts "Sorry, I don't recognize that command."
-   puts
-end
-
 def action_search( contacts )
    puts
    pattern = ask "Search for? "
@@ -103,10 +82,16 @@ def action_search( contacts )
    end
 end
 
-loop do
-  contacts = read_contacts
+def action_error
+   puts
+   puts "Sorry, I don't recognize that command."
+   puts
+end
 
-  index( contacts )
+loop do
+   contacts = read_contacts
+
+   index( contacts )
 
    puts
    response = ask "Who would you like to see (n for new, d for delete, s for search, q to quit)? "
@@ -126,5 +111,5 @@ loop do
    end
 end
 
- puts
- puts "Bye!"
+puts
+puts "Bye!"
