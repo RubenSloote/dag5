@@ -24,13 +24,16 @@ puts "phone: #{contact[:phone]}"
 puts "email: #{contact[:email]}"
 
 def index( contacts )
-   contacts.each_with_index do |contact, i|
-      puts "#{i+1}) #{contact[:name]}"
-   end
-end
 
-def show( contact )
-   puts "#{contact[:name]}"
-   puts "phone: #{contact[:phone]}"
-   puts "email: #{contact[:email]}"
+puts
+print "Who would you like to see? "
+response = gets.chomp
+
+i = response.to_i
+
+contact = contacts[i-1]
+
+puts
+show( contact )
+
 end
