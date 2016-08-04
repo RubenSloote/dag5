@@ -49,6 +49,8 @@ def action_new( contacts )
 
    contacts << contact
 
+   write_contacts( contacts )
+
    puts
    puts "New contact created:"
    puts
@@ -77,6 +79,8 @@ def action_delete( contacts )
 
    contacts.delete_at( i-1 )
 
+   write_contacts( contacts )
+
    puts
 end
 
@@ -100,7 +104,9 @@ def action_search( contacts )
 end
 
 loop do
-   index( contacts )
+  contacts = read_contacts
+
+  index( contacts )
 
    puts
    response = ask "Who would you like to see (n for new, d for delete, s for search, q to quit)? "
