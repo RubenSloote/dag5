@@ -23,11 +23,16 @@ puts "#{contact[:name]}"
 puts "phone: #{contact[:phone]}"
 puts "email: #{contact[:email]}"
 
+def ask( prompt )
+   print prompt
+   gets.chomp
+end
+
+
 def index( contacts )
 
 puts
-print "Who would you like to see? "
-response = gets.chomp
+response = ask "Who would you like to see? "
 
 i = response.to_i
 
@@ -35,5 +40,6 @@ contact = contacts[i-1]
 
 puts
 show( contact )
+
 
 end
