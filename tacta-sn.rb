@@ -1,4 +1,4 @@
-require 'sinatra'
+rrequire 'sinatra'
 require './contacts_file'
 
 
